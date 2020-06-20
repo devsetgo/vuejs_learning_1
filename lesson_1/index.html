@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, , initial-scale=1">
 </head>
 <title>Product App</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+
 <body>
+    <div class="nav-bar"></div>
     <div id="app">
         <div class="product">
             <div class="product-image">
-                <img src="" />
+                <img v-bind:src="image" />
+                
             </div>
-        </div>
-        <div class="product-info">
-            <h1>{{ product }}</h1>
+
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+                <p v-if="inventory > 10">In Stock</p>
+                <p v-else-if="inventory <= 10 && inventory > 0"><strong>Almost sold out!</strong></p>
+                <p v-else><strong>Out of Stock</strong></p>
+                <a :href="link" target="_blank">More products like this</a>
+            </div>
         </div>
     </div>
     <!-- production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
